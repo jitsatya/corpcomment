@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import FeedBackiItem from "./FeedBackiItem";
 import Spinner from "./Spinner";
 import ErrorMessage from "./ErrorMessage";
+import { FeedBackItem } from "../../../lib/types";
 
 export default function FeedBackList() {
-  const [feedbackItems, setFeedbackItems] = useState([]);
+  const [feedbackItems, setFeedbackItems] = useState<FeedBackItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const fetchFeedbackItems = async () => {

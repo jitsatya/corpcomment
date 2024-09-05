@@ -1,9 +1,18 @@
-import React from "react";
+import { useFeedbackItemsStore } from "../../stores/feedbackItemsStore"
+import HashTagItem from "./HashTagItem"
 
-type HashTagListProps = {
-  children: React.ReactNode;
-};
+function HashTagList() {
+  // const {companyList, setSelectedCompany} = useFeedbackItemsContext()
 
-export default function HashTagList({ children }: HashTagListProps) {
-  return <ul className="hashtags">{children}</ul>;
+  const companyList = useFeedbackItemsStore(state=>state.getCompanyList())
+  const selectCompany = useFeedbackItemsStore(state=>state.selectCompany)
+  return (
+    <ul className="hashtags">
+    {companyList.map((company) => (
+      <HashTagItem key={company} onSelect={selectCompany}>{company}</HashTagItem>
+    ))}
+    </ul>
+  )
 }
+
+export default HashTagList

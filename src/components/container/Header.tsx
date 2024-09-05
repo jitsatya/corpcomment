@@ -1,19 +1,18 @@
+import { useFeedbackItemsStore } from "../../stores/feedbackItemsStore";
 import FeedbackForm from "./Header/FeedbackForm";
 import Logo from "./Header/Logo";
 import PageHeading from "./Header/PageHeading";
 import Pattern from "./Header/Pattern";
 
-type HeaderProps = {
-  handleAddToList: (text: string) => void;
-};
+export default function Header() {
 
-export default function Header({ handleAddToList }: HeaderProps) {
+const addItemToList = useFeedbackItemsStore(state => state.addItemToList);
   return (
     <header>
       <Pattern />
       <Logo />
       <PageHeading />
-      <FeedbackForm onAddToList={handleAddToList} />
+      <FeedbackForm onAddToList={addItemToList  } />
     </header>
   );
 }
